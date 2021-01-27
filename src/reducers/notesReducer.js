@@ -1,7 +1,7 @@
 const notesReducer = (state = [], action) => {
   switch(action.type) {
-    case 'FETCH_NOTES':
-      return action.notes
+    case 'LOGIN_SUCCESS':
+      return action.user.notes
     default:
       return state
   }

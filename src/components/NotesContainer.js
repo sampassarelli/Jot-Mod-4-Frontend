@@ -6,19 +6,25 @@ import { fetchNotes } from '../actions/notes'
 class NotesContainer extends React.Component {
   
   componentDidMount(){
-    fetch("http://localhost:3000/api/v1/notes")
-    .then(resp => resp.json())
-    .then(notesArr => {
-      this.props.fetchNotes(notesArr)
-    })
+    if(!this.props.currentUser){
+      this.props.history.push('/login')
+    }
+    // fetch("http://localhost:3000/api/v1/notes")
+    // .then(resp => resp.json())
+    // .then(notesArr => {
+    //   this.props.fetchNotes(notesArr)
+    // })
+  }
+
+  renderNotes = () => {
+    return this.props.notes.map(noteObj => <NoteCard {...noteObj} key={noteObj.id}/>)
   }
 
   render(){
     return(
+
       <div className="noteContainer">
-      {
-        this.props.notes.map(noteObj => <NoteCard {...noteObj} key={noteObj.id}/>)
-      }
+        {this.renderNotes()}
       </div>
     )
   }
@@ -26,12 +32,13 @@ class NotesContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    notes: state.notes
+    notes: state.notes,
+    currentUser: state.currentUser
   }
 }
 
-const mapDispatchToProps = {
-  fetchNotes: fetchNotes
-}
+// const mapDispatchToProps = {
+//   fetchNotes: fetchNotes
+// }
 
-export default connect (mapStateToProps, mapDispatchToProps) (NotesContainer)
+export default connect (mapStateToProps, /*mapDispatchToProps*/) (NotesContainer)

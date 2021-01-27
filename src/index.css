@@ -30,6 +30,14 @@ code {
   width: 100%; /* Full width */
 }
 
+.search{
+  float: right;
+}
+
 .login{
+  margin-top: 55px;
+}
+
+.new-note{
   margin-top: 55px;
 }

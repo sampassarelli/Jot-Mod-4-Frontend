@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-
+import { submitNewNote } from '../actions/notes'
+import { Link } from 'react-router-dom'
 
 class NewNote extends React.Component {
   state = {
     title: '',
-    category: '',
+    subject: '',
     content: '',
   }
   
@@ -24,16 +24,24 @@ class NewNote extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        user_id: this.props.currentUser.id,
         title: this.state.title,
-        category: this.state.category,
-        content: this.state.content,
+        subject: this.state.subject,
+        content: this.state.content
       })
     }
     fetch('http://localhost:3000/api/v1/notes', reqObj)
     .then(resp => resp.json())
     .then(data => {
-      console.log(data)
+      this.props.submitNewNote(data)
+      this.props.history.push('/notes')
     })
+  }
+
+  componentDidMount(){
+    if(!this.props.currentUser){
+      this.props.history.push('/login')
+    }
   }
 
   render(){
@@ -59,8 +67,10 @@ class NewNote extends React.Component {
                     <label>Jot it Down</label>
                     <textarea type="text" name="content" placeholder="Jot it" value={this.state.content} onChange={this.handleInputChange} row="4"/>
                   </div>
-                  <button className="ui primary button" type="submit">Add</button>
-                  <button className="ui primary button" type="submit">Cancel</button>
+                  <button className="ui blue inverted button" type="submit" disabled={!this.state.title || !this.state.subject || !this.state.content}>Add</button>
+                  <Link to='/notes'>
+                    <button className="ui red inverted button" >Cancel</button>
+                  </Link>
                 </form>
               </div>
             </div>
@@ -73,7 +83,13 @@ class NewNote extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-
+  return {
+    currentUser: state.currentUser
+  }
 }
 
-export default connect (mapStateToProps, null) (NewNote)
+const mapDispatchToProps = {
+  submitNewNote: submitNewNote
+}
+
+export default connect (mapStateToProps, mapDispatchToProps) (NewNote)

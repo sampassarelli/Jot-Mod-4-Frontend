@@ -1,8 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Card} from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { showCard } from '../actions/showCard'
+
 
 class NoteCard extends React.Component {
+
+  handleShowCard = (note) => {
+    this.props.showCard(note)
+  }
+
+
   render(){
     return(
       <div>
@@ -14,9 +23,10 @@ class NoteCard extends React.Component {
               <div className="description">{this.props.content}</div>
             </div>
             <div className="extra content">
-              <div className="ui two buttons">
-                <button className="ui blue basic button">View</button>
-                {/* <button className="ui red basic button">Delete</button> */}
+              <div className="ui buttons">
+                <Link to={`/notes/${this.props.id}`}>
+                  <button className="ui blue inverted button" onClick={() => this.handleShowCard(this.props)}>View</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -26,4 +36,8 @@ class NoteCard extends React.Component {
   }
 }
 
-export default NoteCard
+const mapDispatchToProps = {
+  showCard: showCard
+}
+
+export default connect (null, mapDispatchToProps) (NoteCard)

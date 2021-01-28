@@ -9,11 +9,6 @@ class NotesContainer extends React.Component {
     if(!this.props.currentUser){
       this.props.history.push('/login')
     }
-    // fetch("http://localhost:3000/api/v1/notes")
-    // .then(resp => resp.json())
-    // .then(notesArr => {
-    //   this.props.fetchNotes(notesArr)
-    // })
   }
 
   renderNotes = () => {
@@ -37,8 +32,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-// const mapDispatchToProps = {
-//   fetchNotes: fetchNotes
-// }
-
-export default connect (mapStateToProps, /*mapDispatchToProps*/) (NotesContainer)
+export default connect (mapStateToProps, null) (NotesContainer)

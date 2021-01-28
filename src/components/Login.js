@@ -70,7 +70,7 @@ class Login extends Component {
                     <label>Password</label>
                     <input type="password" name={'password'} placeholder="Password" value={this.state.password} onChange={this.handleInputChange} />
                   </div>
-                  <button className="ui primary labeled icon button" type="submit">
+                  <button className="ui primary labeled icon inverted button" type="submit" disabled={!this.state.username || !this.state.password}>
                     <i className="unlock alternate icon"></i>
                     Login
                   </button>

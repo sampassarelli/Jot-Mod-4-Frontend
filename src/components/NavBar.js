@@ -16,9 +16,7 @@ class NavBar extends React.Component{
       <div className='navBar'> 
         {<Menu>
           <Menu.Item name='Home' as={Link} to='/notes'>Home</Menu.Item>
-
           <Menu.Item name='New Note' as={Link} to='/notes/new'>New Jot</Menu.Item>
-
           { 
             this.props.currentUser ? 
               <Menu.Item name='Logout' as={Link} to='/login' onClick = {this.handleClick}>Logout</Menu.Item>

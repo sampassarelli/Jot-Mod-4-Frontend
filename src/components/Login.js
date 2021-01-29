@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { loginSuccess } from '../actions/auth'
+import { Link } from 'react-router-dom'
 
 class Login extends Component {
   state = {
@@ -75,6 +76,12 @@ class Login extends Component {
                     <i className="unlock alternate icon"></i>
                     Login
                   </button>
+                  <Link to={`/signup`}>
+                    <button className="ui violet inverted button" >Sign Up</button>
+                  </Link>
+
+                 
+ 
                 </form>
               </div>
             </div>

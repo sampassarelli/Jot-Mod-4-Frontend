@@ -3,6 +3,7 @@ const notesReducer = (state = [], action) => {
 
   switch(action.type) {
     case 'LOGIN_SUCCESS':
+    case 'CURRENT_USER':
       return action.user.notes
     case 'NEW_NOTE':
       return [...state, action.note]
@@ -12,6 +13,8 @@ const notesReducer = (state = [], action) => {
     case 'DELETE_NOTE':
       updatedNotes = state.filter(note => note.id !== action.id)
       return updatedNotes
+    case 'LOGOUT_USER': 
+      return []
     default:
       return state
   }

@@ -34,8 +34,9 @@ class Login extends Component {
           error: data.error
         })
       } else {
-        console.log("User Valid", data)
-        this.props.loginSuccess(data)
+        localStorage.setItem('jwt_token', data.jwt_token)
+        console.log("User Valid", data.user)
+        this.props.loginSuccess(data.user)
         this.props.history.push('/notes')
       }
     })
@@ -45,7 +46,7 @@ class Login extends Component {
     return (
     <div className="login">
       <div className="page-login">
-      <h1 id="flatnote-header">Welcome to JOT! Write anything on your mind!</h1>
+      <h1 id="flatnote-header">Remember Your Dreams with JOT!</h1>
         <div className="ui centered grid container">
           <div className="nine wide column">
            { this.state.error ? <div className="ui icon warning message">

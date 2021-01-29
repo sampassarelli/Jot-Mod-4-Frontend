@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Input } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { logoutUser } from '../actions/auth'
 
@@ -8,8 +8,12 @@ class NavBar extends React.Component{
 
   handleClick = () => {
     this.props.logoutUser()
+    localStorage.clear()
   }
 
+  // handleLogout = () => {
+  //   localStorage.clear()
+  // }
 
   render(){
     return(
@@ -23,7 +27,24 @@ class NavBar extends React.Component{
               :
               <Menu.Item name='Login' as={Link} to='/login'>Login</Menu.Item>
           }
-          {/* <Input className='search' icon='search' placeholder='Search...'></Input> */}
+           {/* <div className='right menu'>
+            <div className='item'>
+            <div className='ui icon input'>
+              <input
+                type='text'
+                placeholder='Search...'
+                onChange={this.handleChange}
+              />
+              <i className='search link icon'></i>
+            </div>
+          </div>
+          </div> */}
+          {
+            this.props.currentUser ? 
+            <Input className='input right menu' icon='search' placeholder='Search...'></Input>
+            :
+            null
+          }
         </Menu> }
       </div>
     )

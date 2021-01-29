@@ -44,7 +44,7 @@ class NoteEdit extends React.Component {
     return(
       <div className="note-edit">
         <div className="page-login">
-          <h1 id="flatnote-header">Update this Jot!</h1>
+          <h1 id="flatnote-header">Update this Dream!</h1>
           <div className="ui centered grid container">
             <div className="nine wide column">
             

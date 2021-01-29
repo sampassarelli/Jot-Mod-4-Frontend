@@ -38,17 +38,17 @@ class NewNote extends React.Component {
     })
   }
 
-  componentDidMount(){
-    if(!this.props.currentUser){
-      this.props.history.push('/login')
-    }
-  }
+  // componentDidMount(){
+  //   if(!this.props.currentUser){
+  //     this.props.history.push('/login')
+  //   }
+  // }
 
   render(){
     return(
       <div className="new-note">
         <div className="page-login">
-          <h1 id="flatnote-header">Jot Down Anything!</h1>
+          <h1 id="flatnote-header">Jot Down Your Weird Ass Dream!</h1>
           <div className="ui centered grid container">
             <div className="nine wide column">
             

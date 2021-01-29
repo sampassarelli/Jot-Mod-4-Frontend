@@ -3,6 +3,8 @@ const editNoteReducer = (state = null, action) => {
     case 'EDIT_NOTE':
     case 'UPDATE_NOTE':
       return action.note
+    case 'LOGOUT_USER': 
+      return null
     default:
       return state
   }

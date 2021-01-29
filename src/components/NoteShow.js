@@ -6,6 +6,12 @@ import { deleteNote } from '../actions/notes'
 
 class NoteShow extends React.Component{
 
+  componentDidMount(){
+    if(!this.props.showCard){
+      // this.props.match.params.id - grabs id and do fetch based on this ID
+    }
+  }
+
   handleEditNote = (note) => {
     this.props.editNote(note)
   }
@@ -24,12 +30,13 @@ class NoteShow extends React.Component{
 
 
   render(){
+    // create a loading store state that is loading and toggle it and wait for the fetch to come back and change it from showLoading is false to change it back to the rest of the render
     const note = this.props.showCard
     console.log(note.id)
     return(
       <div className="note-show">
         <div className="note-show">
-          <h2 id="flatnote-header">In This Jot...</h2>
+          <h2 id="flatnote-header">In This Dream...</h2>
           <div className="ui centered grid container">
             <div className="nine wide column">
             

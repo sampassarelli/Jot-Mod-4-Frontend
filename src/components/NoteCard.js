@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button, Card} from 'semantic-ui-react'
+// import { Button, Card} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { showCard } from '../actions/showCard'
 
